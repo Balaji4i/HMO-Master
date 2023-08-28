@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HMOTradDtl_EO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXHR_HMO_TRAD_DTL"
+  AliasName="HMOTradDtl_EO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="HmoTradDtlId"
+    ColumnName="HMO_TRAD_DTL_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_TRAD_DTL"
+    PrimaryKey="true"
+    ChangeIndicator="true">
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="HMOTradDtl_EORow"/>
+  </Attribute>
+  <Attribute
+    Name="HmoMasterHdrId"
+    ColumnName="HMO_MASTER_HDR_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_TRAD_DTL"
+    ChangeIndicator="true"/>
+  <Attribute
+    Name="HmoTradClass"
+    Precision="30"
+    ColumnName="HMO_TRAD_CLASS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TradCategory"
+    Precision="30"
+    ColumnName="TRAD_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TradCatLibertyBlueCost"
+    ColumnName="TRAD_CAT_LIBERTY_BLUE_COST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_TRAD_DTL"/>
+  <Attribute
+    Name="TradCatAxamansardCost"
+    ColumnName="TRAD_CAT_AXAMANSARD_COST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_TRAD_DTL"/>
+  <Attribute
+    Name="TradCatRedcareCost"
+    ColumnName="TRAD_CAT_REDCARE_COST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_TRAD_DTL"/>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXHR_HMO_TRAD_DTL"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXHR_HMO_TRAD_DTL"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TradCategoryType"
+    Precision="240"
+    ColumnName="TRAD_CATEGORY_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TradCatTypeCost"
+    ColumnName="TRAD_CAT_TYPE_COST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_TRAD_DTL"/>
+  <Attribute
+    Name="HmoType"
+    Precision="30"
+    ColumnName="HMO_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AssociatedCategoryCost"
+    ColumnName="ASSOCIATED_CATEGORY_COST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_TRAD_DTL"/>
+  <Attribute
+    Name="HmoOptions"
+    Precision="240"
+    ColumnName="HMO_OPTIONS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DependentOption"
+    Precision="240"
+    ColumnName="DEPENDENT_OPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PreferredCategory"
+    Precision="240"
+    ColumnName="PREFERRED_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_TRAD_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="HMOMaster_EO"
+    Association="model.association.HMOLines_ASSOC"
+    AssociationEnd="model.association.HMOLines_ASSOC.HMOMaster_EO"
+    AssociationOtherEnd="model.association.HMOLines_ASSOC.HMOTradDtl_EO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="HMOMaster_EO1"
+    Association="model.association.HMOTrd_Assoc"
+    AssociationEnd="model.association.HMOTrd_Assoc.HMOMaster_EO1"
+    AssociationOtherEnd="model.association.HMOTrd_Assoc.HMOTradDtl_EO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="HmotraddtlEoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="HMOTRADDTL_EO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOTradDtl_EO.HmoTradDtlId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_HMOTradDtl_EO">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="HMOMASTER_EO_PRIMARY_KEY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_HMOTRAD_DTL_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOTradDtl_EO.HmoMasterHdrId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_HMOTradDtl_EO1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="HMOMASTER_EO_PRIMARY_KEY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_HMOTRAD_DTL_EO1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOTradDtl_EO.HmoMasterHdrId"/>
+    </AttrArray>
+  </Key>
+</Entity>

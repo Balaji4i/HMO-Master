@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditHMODetailsPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HMOOptionMasterVO" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="HMOOptionMasterVOIterator"/>
+    <iterator Binds="HMOCategoryMasterVO" RangeSize="5" DataControl="Oando_AMDataControl"
+              id="HMOCategoryMasterVOIterator"/>
+    <iterator Binds="HMOHospitalMasterVO" RangeSize="5" DataControl="Oando_AMDataControl"
+              id="HMOHospitalMasterVOIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="Name_Trns">
+      <AttrNames>
+        <Item Value="Name_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="Number_Trns">
+      <AttrNames>
+        <Item Value="Number_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="Email_Trns">
+      <AttrNames>
+        <Item Value="Email_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="Group_Trns">
+      <AttrNames>
+        <Item Value="Group_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="Cadre_Trns">
+      <AttrNames>
+        <Item Value="Cadre_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HMOOptionMasterVOIterator" id="HMOOptionMasterVO">
+      <nodeDefinition DefName="model.vo.HMOOptionMasterVO" Name="HMOOptionMasterVO0">
+        <AttrNames>
+          <Item Value="HmoOptionsId"/>
+          <Item Value="HmoOptions"/>
+          <Item Value="HmoType"/>
+          <Item Value="ResiAddress"/>
+          <Item Value="ContactPersonName"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="ContactNumber"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="HmoOptionsId">
+      <AttrNames>
+        <Item Value="HmoOptionsId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="HmoOptions">
+      <AttrNames>
+        <Item Value="HmoOptions"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="ContactPersonName">
+      <AttrNames>
+        <Item Value="ContactPersonName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HMOOptionMasterVOIterator" StaticList="false" Uses="LOV_HmoType" id="HmoType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="EmailAddress">
+      <AttrNames>
+        <Item Value="EmailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="ContactNumber">
+      <AttrNames>
+        <Item Value="ContactNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="ResiAddress">
+      <AttrNames>
+        <Item Value="ResiAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOOptionMasterVOIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HMOCategoryMasterVOIterator" id="HMOCategoryMasterVO">
+      <nodeDefinition DefName="model.vo.HMOCategoryMasterVO" Name="HMOCategoryMasterVO0">
+        <AttrNames>
+          <Item Value="HmoOptions"/>
+          <Item Value="HmoCategory"/>
+          <Item Value="DependentOptions"/>
+          <Item Value="MaxEligibiltyCost"/>
+          <Item Value="Currency"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="HMOHospitalMasterVOIterator" id="HMOHospitalMasterVO">
+      <nodeDefinition DefName="model.vo.HMOHospitalMasterVO" Name="HMOHospitalMasterVO0">
+        <AttrNames>
+          <Item Value="HmoOptions"/>
+          <Item Value="StateOfResidence"/>
+          <Item Value="Hospital"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HMOHospitalMasterVOIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="HMOCategoryMasterVOIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="HMOCategoryMasterVOIterator" id="CreateWithParams" RequiresUpdateModel="true"
+            Action="createWithParams">
+      <NamedData NDName="HmoOptions" NDValue="#{bindings.HmoOptions.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="HMOHospitalMasterVOIterator" id="CreateWithParams1" RequiresUpdateModel="true"
+            Action="createWithParams">
+      <NamedData NDName="HmoOptions" NDValue="#{bindings.HmoOptions.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <list IterBinding="HMOOptionMasterVOIterator" StaticList="false" Uses="LOV_PlanName" id="PlanName"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

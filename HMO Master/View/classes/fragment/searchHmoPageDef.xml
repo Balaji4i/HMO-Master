@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="searchHmoPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HMOMaster_VO" RangeSize="5" DataControl="Oando_AMDataControl" id="HMOMaster_VOIterator"/>
+    <searchRegion Criteria="search_VC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="HMOMaster_VOIterator" id="searchVCQuery"/>
+    <iterator id="HMOBupaDtl_VOIterator" Binds="HMOBupaDtl_VO" DataControl="Oando_AMDataControl" RangeSize="25"/>
+    <iterator id="HMOTradDtlIterator" Binds="HMOTradDtl" DataControl="Oando_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="HMOMaster_VOIterator" id="HMOMaster_VO">
+      <nodeDefinition DefName="model.vo.HMOMaster_VO" Name="HMOMaster_VO0">
+        <AttrNames>
+          <Item Value="HmoMasterHdrId"/>
+          <Item Value="HmoPlanName"/>
+          <Item Value="HmoPlanYear"/>
+          <Item Value="BupaEligibleCost"/>
+          <Item Value="BupaCurrencyCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="HmoMasterHdrId">
+      <AttrNames>
+        <Item Value="HmoMasterHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HMOMaster_VOIterator" id="Delete" InstanceName="Oando_AMDataControl.HMOMaster_VO"
+            DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

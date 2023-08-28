@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE OperationDefinitions SYSTEM "jbo_03_01.dtd">
+<OperationDefinitions xmlns="http://xmlns.oracle.com/bc4j" Name="HMOTradDtlOperations">
+  <ExpressionCodeSource
+    Name="HMOTradDtlRow"
+    Type="Static"
+    URI="model/vo/HMOTradDtlRow.bcs"/>
+  <ExpressionCodeSource
+    Name="HMOTradDtl"
+    Type="Static"
+    URI="model/vo/HMOTradDtl.bcs"/>
+</OperationDefinitions>

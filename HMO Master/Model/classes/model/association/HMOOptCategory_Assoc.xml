@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HMOOptCategory_Assoc"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="HMOOptionMasterEO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.eo.HMOOptionMasterEO"
+    LockLevel="NONE"
+    DeleteContainee="true">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="HMOOptionMasterEO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOOptionMasterEO.HmoOptionsId"/>
+      <Item Value="model.eo.HMOOptionMasterEO.PlanName"/>
+      <Item Value="model.eo.HMOOptionMasterEO.HmoMasterHdrId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="HMOCategoryMasterEO"
+    Cardinality="-1"
+    Owner="model.eo.HMOCategoryMasterEO"
+    HasOwner="true">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="HMOCategoryMasterEO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOCategoryMasterEO.HmoOptionsId"/>
+      <Item Value="model.eo.HMOCategoryMasterEO.PlanName"/>
+      <Item Value="model.eo.HMOCategoryMasterEO.HmoMasterHdrId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="SearchHmo_BTF_SearchHmo_BTF_ExecutePageDef" Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="HMOMaster_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="HMOMaster_VOIterator"
+              Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="HMOMaster_VOIterator" id="Execute" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

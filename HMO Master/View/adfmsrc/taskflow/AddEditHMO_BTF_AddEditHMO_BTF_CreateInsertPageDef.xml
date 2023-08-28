@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="AddEditHMO_BTF_AddEditHMO_BTF_CreateInsertPageDef" Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="HMOMaster_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="HMOMaster_VOIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="HMOMaster_VOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

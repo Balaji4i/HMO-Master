@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/AddEditDuty_BTF.xml" id="AddEditDuty_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="mode"/>
+      <input-parameter name="headerId"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/AddEditHMODetails.xml" id="AddEditHMODetails" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="mode"/>
+      <input-parameter name="headerId"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/AddEditHMO_BTF.xml" id="AddEditHMO_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="mode"/>
+      <input-parameter name="headerId"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/SearchDuty_BTF.xml" id="SearchDuty_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/SearchHmoOptions_BTF.xml" id="SearchHmoOptions_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/SearchHmo_BTF.xml" id="SearchHmo_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/testingFlow.xml" id="testingFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+</task-flow-registry>

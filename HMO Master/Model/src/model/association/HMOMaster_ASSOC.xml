@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HMOMaster_ASSOC"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="HMOMaster_EO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.eo.HMOMaster_EO"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="HMOMaster_EO"/>
+      <Attr Name="_foreignKey" Value="model.eo.HMOMaster_EO.HmomasterEoPrimaryKey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOMaster_EO.HmoMasterHdrId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="HMOBupaDtl_EO"
+    Cardinality="-1"
+    Owner="model.eo.HMOBupaDtl_EO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="HMOBupaDtl_EO"/>
+      <Attr Name="_foreignKey" Value="model.eo.HMOBupaDtl_EO.fk_HMOBupaDtl_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOBupaDtl_EO.HmoMasterHdrId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

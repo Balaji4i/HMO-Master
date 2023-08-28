@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar"/>
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1">
+                            <af:outputText value="HMO Plan" id="ot1" inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal" halign="right">
+                                <af:button text="Activate" id="b7"
+                                disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                           actionListener="#{backingBeanScope.AddEditHmo.onClickActivate}"
+                                           partialTriggers="sbc1"/>
+                                <af:spacer width="10" height="10" id="s1"/>
+                                  <af:button text="InActive" id="b8"
+                                disabled="#{bindings.Active1.inputValue eq 'Y' ? true : false}"
+                                           actionListener="#{backingBeanScope.AddEditHmo.onClickInactive}"
+                                           partialTriggers="sbc1"/>
+                                            <af:spacer width="10" height="10" id="s7"/>
+                                <af:button text="Save" id="b3" 
+                                disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                           actionListener="#{backingBeanScope.AddEditHmo.onClickSave}"
+                                           partialSubmit="true"/>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Cancel" id="b1"
+                                           actionListener="#{backingBeanScope.AddEditHmo.onClickCancel}"
+                                           immediate="true" action="back"></af:button>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <af:panelGroupLayout id="pgl3" layout="horizontal" styleClass="AFStretchWidth">
+                    <af:panelFormLayout id="pfl1" maxColumns="2" rows="2">
+                        <af:inputText value="#{bindings.HmoMasterHdrId.inputValue}" contentStyle="width:200px;"
+                                      label="#{bindings.HmoMasterHdrId.hints.label}" readOnly="true" autoSubmit="true"
+                                      disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                      required="#{bindings.HmoMasterHdrId.hints.mandatory}"
+                                      columns="#{bindings.HmoMasterHdrId.hints.displayWidth}"
+                                      maximumLength="#{bindings.HmoMasterHdrId.hints.precision}"
+                                      shortDesc="#{bindings.HmoMasterHdrId.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.HmoMasterHdrId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.HmoMasterHdrId.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.HmoPlanName.inputValue}" contentStyle="width:200px;"
+                                      label="#{bindings.HmoPlanName.hints.label}" autoSubmit="true"
+                                      disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                      required="#{bindings.HmoPlanName.hints.mandatory}"
+                                      columns="#{bindings.HmoPlanName.hints.displayWidth}"
+                                      maximumLength="#{bindings.HmoPlanName.hints.precision}"
+                                      shortDesc="#{bindings.HmoPlanName.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.HmoPlanName.validator}"/>
+                        </af:inputText>
+                      
+                        <af:inputComboboxListOfValues id="hmoPlanYearId"
+                                                      disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                      popupTitle="Search and Select: #{bindings.HmoPlanYear.hints.label}"
+                                                      value="#{bindings.HmoPlanYear.inputValue}"
+                                                      contentStyle="width:200px;"
+                                                      label="#{bindings.HmoPlanYear.hints.label}"
+                                                      model="#{bindings.HmoPlanYear.listOfValuesModel}"
+                                                      required="#{bindings.HmoPlanYear.hints.mandatory}"
+                                                      columns="#{bindings.HmoPlanYear.hints.displayWidth}"
+                                                      shortDesc="#{bindings.HmoPlanYear.hints.tooltip}">
+                            <f:validator binding="#{bindings.HmoPlanYear.validator}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:selectBooleanCheckbox value="#{bindings.Active1.inputValue}" 
+                                                  label="#{bindings.Active1.label}" autoSubmit="true"
+                                                  shortDesc="#{bindings.Active1.hints.tooltip}" id="sbc1"
+                                                  partialTriggers="b7" disabled="true"/>
+                        <af:outputText value="#{bindings.Active1.inputValue}" rendered="false" id="ot2"/>
+                        <af:inputText value="#{bindings.BupaCurrencyCode.inputValue}"
+                                      label="#{bindings.BupaCurrencyCode.hints.label}" contentStyle="width:200px;"
+                                      required="#{bindings.BupaCurrencyCode.hints.mandatory}" disabled="true"
+                                      columns="#{bindings.BupaCurrencyCode.hints.displayWidth}" rendered="false"
+                                      maximumLength="#{bindings.BupaCurrencyCode.hints.precision}"
+                                      shortDesc="#{bindings.BupaCurrencyCode.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.BupaCurrencyCode.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.BupaEligibleCost.inputValue}" contentStyle="width:200px;"
+                                      label="#{bindings.BupaEligibleCost.hints.label}" autoSubmit="true"
+                                      required="#{bindings.BupaEligibleCost.hints.mandatory}" rendered="false"
+                                      columns="#{bindings.BupaEligibleCost.hints.displayWidth}"
+                                      maximumLength="#{bindings.BupaEligibleCost.hints.precision}"
+                                      shortDesc="#{bindings.BupaEligibleCost.hints.tooltip}" id="it4"
+                                      disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}">
+                            <f:validator binding="#{bindings.BupaEligibleCost.validator}"/>
+                            <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>
+                        <af:inputText value="NGN" contentStyle="width:200px;"
+                                      label="#{bindings.AxaLbCurrencyCode.hints.label}" disabled="true"
+                                      required="#{bindings.AxaLbCurrencyCode.hints.mandatory}"
+                                      columns="#{bindings.AxaLbCurrencyCode.hints.displayWidth}"
+                                      maximumLength="#{bindings.AxaLbCurrencyCode.hints.precision}" rendered="false"
+                                      shortDesc="#{bindings.AxaLbCurrencyCode.hints.tooltip}" id="it10">
+                            <f:validator binding="#{bindings.AxaLbCurrencyCode.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.AxaLbEligibleCost.inputValue}" contentStyle="width:200px;"
+                                      label="#{bindings.AxaLbEligibleCost.hints.label}" autoSubmit="true"
+                                      disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                      required="#{bindings.AxaLbEligibleCost.hints.mandatory}" rendered="false"
+                                      columns="#{bindings.AxaLbEligibleCost.hints.displayWidth}"
+                                      maximumLength="#{bindings.AxaLbEligibleCost.hints.precision}"
+                                      shortDesc="#{bindings.AxaLbEligibleCost.hints.tooltip}" id="it11">
+                            <f:validator binding="#{bindings.AxaLbEligibleCost.validator}"/>
+                            <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>                      
+                        <af:inputComboboxListOfValues id="trans_YearId"
+                                                      popupTitle="Search and Select: #{bindings.Trans_Year.hints.label}"
+                                                      value="#{bindings.Trans_Year.inputValue}" 
+                                                      label="#{bindings.Trans_Year.hints.label}"
+                                                      model="#{bindings.Trans_Year.listOfValuesModel}"
+                                                      required="#{bindings.Trans_Year.hints.mandatory}"
+                                                      columns="#{bindings.Trans_Year.hints.displayWidth}"
+                                                      shortDesc="#{bindings.Trans_Year.hints.tooltip}" rendered="false">
+                            <f:validator binding="#{bindings.Trans_Year.validator}"/>
+                        </af:inputComboboxListOfValues>
+                    </af:panelFormLayout>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="10" id="s3"/>
+                <af:panelBox text="" id="pb3" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <af:spacer width="10" height="10" id="s4"/>
+                    <af:panelTabbed position="above"  id="pt2">
+                        <af:showDetailItem id="sdi2" text="International"  >
+                            <af:panelBox  id="pb2" inlineStyle="border-color:transparent;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc3" styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t6">
+                                          <af:link actionListener="#{bindings.CreateInsert.execute}" 
+                                               icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                        id="b12"/>
+                                                <af:spacer width="10" height="10" id="s15"/>
+                                                <af:link actionListener="#{bindings.Delete.execute}" 
+                                                 icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_report_16_act.png"
+                                        disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                         disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true"
+                                        
+                                                        id="b14"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.HMOBupaDtl_VO1.collectionModel}" var="row"
+                                              rows="#{bindings.HMOBupaDtl_VO1.rangeSize}"
+                                              emptyText="#{bindings.HMOBupaDtl_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" scrollPolicy="page"
+                                              selectedRowKeys="#{bindings.HMOBupaDtl_VO1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.HMOBupaDtl_VO1.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.HMOBupaDtl_VO1.rangeSize}"
+                                              id="t5" >
+                                        <af:column headerText="HMO Option"
+                                                   id="c15" width="250">
+                                            <af:selectOneChoice value="#{row.bindings.HmoOptions.inputValue}"
+                                                                label="#{row.bindings.HmoOptions.label}"
+                                                                autoSubmit="true"
+                                                                required="#{bindings.HMOBupaDtl_VO1.hints.HmoOptions.mandatory}"
+                                                                shortDesc="#{bindings.HMOBupaDtl_VO1.hints.HmoOptions.tooltip}"
+                                                                id="soc5">
+                                                <f:selectItems value="#{row.bindings.HmoOptions.items}" id="si5"/>
+                                                <f:validator binding="#{row.bindings.HmoOptions.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column headerText="HMO Category"
+                                                   id="c16" width="300">
+                                            <af:selectOneChoice value="#{row.bindings.HmoCategory.inputValue}"
+                                                                label="#{row.bindings.HmoCategory.label}" autoSubmit="true"
+                                                                required="#{bindings.HMOBupaDtl_VO1.hints.HmoCategory.mandatory}"
+                                                                shortDesc="#{bindings.HMOBupaDtl_VO1.hints.HmoCategory.tooltip}"
+                                                                id="soc6">
+                                                <f:selectItems value="#{row.bindings.HmoCategory.items}" id="si6"/>
+                                                <f:validator binding="#{row.bindings.HmoCategory.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column headerText="Age Category" width="300"
+                                                   id="c19">
+                                            <af:inputComboboxListOfValues id="trans_CategoryId1" autoSubmit="true"
+                                                                          popupTitle="Search and Select: #{bindings.HMOBupaDtl_VO1.hints.Trans_Category.label}"
+                                                                          value="#{row.bindings.Trans_Category.inputValue}"
+                                                                          model="#{row.bindings.Trans_Category.listOfValuesModel}"
+                                                                          required="#{bindings.HMOBupaDtl_VO1.hints.Trans_Category.mandatory}"
+                                                                          columns="#{bindings.HMOBupaDtl_VO1.hints.Trans_Category.displayWidth}"
+                                                                          shortDesc="#{bindings.HMOBupaDtl_VO1.hints.Trans_Category.tooltip}">
+                                                <f:validator binding="#{row.bindings.Trans_Category.validator}"/>
+                                            </af:inputComboboxListOfValues>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.HMOBupaDtl_VO1.hints.AgeCategory.label}" rendered="false"
+                                                   id="c17" width="200">
+                                            <af:inputText value="#{row.bindings.AgeCategory.inputValue}"
+                                                          label="#{bindings.HMOBupaDtl_VO1.hints.AgeCategory.label}"
+                                                          required="#{bindings.HMOBupaDtl_VO1.hints.AgeCategory.mandatory}"
+                                                          columns="#{bindings.HMOBupaDtl_VO1.hints.AgeCategory.displayWidth}"
+                                                          maximumLength="#{bindings.HMOBupaDtl_VO1.hints.AgeCategory.precision}"
+                                                          shortDesc="#{bindings.HMOBupaDtl_VO1.hints.AgeCategory.tooltip}"
+                                                          id="it13">
+                                                <f:validator binding="#{row.bindings.AgeCategory.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="Age Category Cost"
+                                                   id="c18" width="250">
+                                            <af:inputText value="#{row.bindings.AgeCategoryCost.inputValue}"
+                                                          label="#{bindings.HMOBupaDtl_VO1.hints.AgeCategoryCost.label}"
+                                                          required="#{bindings.HMOBupaDtl_VO1.hints.AgeCategoryCost.mandatory}"
+                                                          columns="#{bindings.HMOBupaDtl_VO1.hints.AgeCategoryCost.displayWidth}"
+                                                          maximumLength="#{bindings.HMOBupaDtl_VO1.hints.AgeCategoryCost.precision}"
+                                                          shortDesc="#{bindings.HMOBupaDtl_VO1.hints.AgeCategoryCost.tooltip}"
+                                                          id="it14">
+                                                <f:validator binding="#{row.bindings.AgeCategoryCost.validator}"/>
+                                               <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                                            </af:inputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelBox>
+                            <af:panelBox  id="pb4" inlineStyle="border-color:transparent;"  rendered="false"
+                                         showDisclosure="false">
+                                <f:facet name="toolbar">
+                                    <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach">
+                                        <f:facet name="menus"/>
+                                        <f:facet name="toolbar">
+                                            <af:toolbar id="t2">
+                                                <af:link actionListener="#{bindings.CreateInsert.execute}" 
+                                               icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                        id="b2"/>
+                                                <af:spacer width="10" height="10" id="s5"/>
+                                                <af:link actionListener="#{bindings.Delete.execute}" 
+                                                 icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_report_16_act.png"
+                                        disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                         disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true"
+                                        
+                                                        id="b4"/>
+                                            </af:toolbar>
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{bindings.HMOBupaDtl_VO.collectionModel}" var="row"
+                                                  rows="#{bindings.HMOBupaDtl_VO.rangeSize}"
+                                                  emptyText="#{bindings.HMOBupaDtl_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  rowBandingInterval="0" scrollPolicy="page"
+                                                  selectedRowKeys="#{bindings.HMOBupaDtl_VO.collectionModel.selectedRow}"
+                                                  selectionListener="#{bindings.HMOBupaDtl_VO.collectionModel.makeCurrent}"
+                                                  rowSelection="single" fetchSize="5"
+                                                  id="t1" partialTriggers="::b2 ::b4 :::b7">
+                                            <af:column headerText="#{bindings.HMOBupaDtl_VO.hints.Trans_Category.label}"
+                                                       width="300" id="c9">
+                                                <af:inputComboboxListOfValues id="tran_CategoryId"
+                                                                              disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                              popupTitle="Search and Select: #{bindings.HMOBupaDtl_VO.hints.Trans_Category.label}"
+                                                                              value="#{row.bindings.Trans_Category.inputValue}"
+                                                                              model="#{row.bindings.Trans_Category.listOfValuesModel}"
+                                                                              required="#{bindings.HMOBupaDtl_VO.hints.Trans_Category.mandatory}"
+                                                                              columns="#{bindings.HMOBupaDtl_VO.hints.Trans_Category.displayWidth}"
+                                                                              shortDesc="#{bindings.HMOBupaDtl_VO.hints.Trans_Category.tooltip}">
+                                                    <f:validator binding="#{row.bindings.Trans_Category.validator}"/>
+                                                </af:inputComboboxListOfValues>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategory.label}"
+                                                       id="c1" width="300" rendered="false">
+                                                <af:inputComboboxListOfValues id="bupaAgeCategoryId"
+                                                                              disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                              popupTitle="Search and Select: #{bindings.HMOBupaDtl_VO.hints.BupaAgeCategory.label}"
+                                                                              value="#{row.bindings.BupaAgeCategory.inputValue}"
+                                                                              model="#{row.bindings.BupaAgeCategory.listOfValuesModel}"
+                                                                              required="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategory.mandatory}"
+                                                                              columns="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategory.displayWidth}"
+                                                                              shortDesc="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategory.tooltip}">
+                                                    <f:validator binding="#{row.bindings.BupaAgeCategory.validator}"/>
+                                                </af:inputComboboxListOfValues>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.HMOBupaDtl_VO.hints.Trans_BupaCatType.label}"
+                                                       width="300" id="c10">
+                                                <af:selectOneChoice value="#{row.bindings.Trans_BupaCatType.inputValue}"
+                                                                    label="#{row.bindings.Trans_BupaCatType.label}"
+                                                                    disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                    required="#{bindings.HMOBupaDtl_VO.hints.Trans_BupaCatType.mandatory}"
+                                                                    shortDesc="#{bindings.HMOBupaDtl_VO.hints.Trans_BupaCatType.tooltip}"
+                                                                    id="soc1">
+                                                    <f:selectItems value="#{row.bindings.Trans_BupaCatType.items}"
+                                                                   id="si1"/>
+                                                    <f:validator binding="#{row.bindings.Trans_BupaCatType.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategoryCost.label}"
+                                                       id="c2" width="300">
+                                                <af:inputText value="#{row.bindings.BupaAgeCategoryCost.inputValue}"
+                                                              disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                              label="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategoryCost.label}"
+                                                              required="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategoryCost.mandatory}"
+                                                              columns="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategoryCost.displayWidth}"
+                                                              maximumLength="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategoryCost.precision}"
+                                                              shortDesc="#{bindings.HMOBupaDtl_VO.hints.BupaAgeCategoryCost.tooltip}"
+                                                              id="it5">
+                                                    <f:validator binding="#{row.bindings.BupaAgeCategoryCost.validator}"/>
+                                                    <af:convertNumber minFractionDigits="2" maxFractionDigits="2"
+                                                                      pattern="###,###,###,###"/>
+                                                </af:inputText>
+                                            </af:column>
+                                        </af:table>
+                                    </af:panelCollection>
+                                </f:facet>
+                                
+                            </af:panelBox>
+                        </af:showDetailItem>
+                         <af:showDetailItem id="sdi1" text="Local">
+                            <af:panelBox  id="pb6" showDisclosure="false" inlineStyle="border-color:transparent;">
+                                <f:facet name="toolbar"/>
+                                <af:panelCollection id="pc4" styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t8">
+                                         <af:link actionListener="#{bindings.CreateInsert1.execute}"
+                                           icon="/images/func_add_16_ena.png" 
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                       id="b15"/>
+                                            <af:spacer width="10" height="10" id="s16"/>
+                                            <af:link  icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_report_16_act.png"
+                                         disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                         disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true"
+                                        actionListener="#{bindings.Delete1.execute}" 
+                                                     id="b16"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.HMOTradDtl1.collectionModel}" var="row"
+                                              rows="#{bindings.HMOTradDtl1.rangeSize}"
+                                              emptyText="#{bindings.HMOTradDtl1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" scrollPolicy="page"
+                                              selectedRowKeys="#{bindings.HMOTradDtl1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.HMOTradDtl1.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.HMOTradDtl1.rangeSize}"
+                                              id="t7" >
+                                        <af:column headerText="HMO Options" id="c20"
+                                                   width="230">
+                                            <af:selectOneChoice value="#{row.bindings.HmoOptions.inputValue}"
+                                                                label="#{row.bindings.HmoOptions.label}"
+                                                                autoSubmit="true"
+                                                                required="#{bindings.HMOTradDtl1.hints.HmoOptions.mandatory}"
+                                                                shortDesc="#{bindings.HMOTradDtl1.hints.HmoOptions.tooltip}"
+                                                                id="soc7">
+                                                <f:selectItems value="#{row.bindings.HmoOptions.items}" id="si7"/>
+                                                <f:validator binding="#{row.bindings.HmoOptions.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column headerText="Preferred Category"
+                                                   width="300" id="c21">
+                                            <af:selectOneChoice value="#{row.bindings.PreferredCategory.inputValue}"
+                                                                label="#{row.bindings.PreferredCategory.label}"
+                                                                autoSubmit="true" 
+                                                                required="#{bindings.HMOTradDtl1.hints.PreferredCategory.mandatory}"
+                                                                shortDesc="#{bindings.HMOTradDtl1.hints.PreferredCategory.tooltip}"
+                                                                id="soc8">
+                                                <f:selectItems value="#{row.bindings.PreferredCategory.items}"
+                                                               id="si8"/>
+                                                <f:validator binding="#{row.bindings.PreferredCategory.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column headerText="Dependent Option"
+                                                   id="c124" width="300">
+                                            <af:inputComboboxListOfValues id="trans_CategoryId2" 
+                                                                          popupTitle="Search and Select: #{bindings.HMOTradDtl1.hints.Trans_Category.label}"
+                                                                          value="#{row.bindings.Trans_Category.inputValue}"
+                                                                          model="#{row.bindings.Trans_Category.listOfValuesModel}"
+                                                                          required="#{bindings.HMOTradDtl1.hints.Trans_Category.mandatory}"
+                                                                          columns="#{bindings.HMOTradDtl1.hints.Trans_Category.displayWidth}"
+                                                                          shortDesc="#{bindings.HMOTradDtl1.hints.Trans_Category.tooltip}">
+                                                <f:validator binding="#{row.bindings.Trans_Category.validator}"/>
+                                            </af:inputComboboxListOfValues>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.HMOTradDtl1.hints.DependentOption.label}"  rendered="false"
+                                                   width="300" id="c22">
+                                            <af:inputText value="#{row.bindings.DependentOption.inputValue}"
+                                                          label="#{bindings.HMOTradDtl1.hints.DependentOption.label}"
+                                                          required="#{bindings.HMOTradDtl1.hints.DependentOption.mandatory}"
+                                                          columns="#{bindings.HMOTradDtl1.hints.DependentOption.displayWidth}"
+                                                          maximumLength="#{bindings.HMOTradDtl1.hints.DependentOption.precision}"
+                                                          shortDesc="#{bindings.HMOTradDtl1.hints.DependentOption.tooltip}"
+                                                          id="it12">
+                                                <f:validator binding="#{row.bindings.DependentOption.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="Associated Category Cost"
+                                                   width="250" id="c23">
+                                            <af:inputText value="#{row.bindings.AssociatedCategoryCost.inputValue}"
+                                                          label="#{bindings.HMOTradDtl1.hints.AssociatedCategoryCost.label}"
+                                                          required="#{bindings.HMOTradDtl1.hints.AssociatedCategoryCost.mandatory}"
+                                                          columns="#{bindings.HMOTradDtl1.hints.AssociatedCategoryCost.displayWidth}"
+                                                          maximumLength="#{bindings.HMOTradDtl1.hints.AssociatedCategoryCost.precision}"
+                                                          shortDesc="#{bindings.HMOTradDtl1.hints.AssociatedCategoryCost.tooltip}"
+                                                          id="it15">
+                                                <f:validator binding="#{row.bindings.AssociatedCategoryCost.validator}"/>
+                                                 <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                                            </af:inputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelBox>
+                            <af:panelBox  id="pb5" inlineStyle="border-color:transparent;" rendered="false"
+                            
+                                         showDisclosure="false">
+                                <af:panelCollection id="pc2" styleClass="AFStretchWidth" featuresOff="detach">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t4">
+                                            <af:link actionListener="#{bindings.CreateInsert1.execute}"
+                                           icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                       id="b5"/>
+                                            <af:spacer width="10" height="10" id="s6"/>
+                                            <af:link  icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_report_16_act.png"
+                                         disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                         disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true"
+                                        actionListener="#{bindings.Delete1.execute}" 
+                                                     id="b6"/>
+                                        </af:toolbar>
+                                        
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.HMOTradDtl.collectionModel}" var="row"
+                                              rows="#{bindings.HMOTradDtl.rangeSize}"
+                                              emptyText="#{bindings.HMOTradDtl.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" scrollPolicy="page"
+                                              selectedRowKeys="#{bindings.HMOTradDtl.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.HMOTradDtl.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="5"
+                                              id="t3" partialTriggers="::b5 ::b6 ::b7">
+                                        <af:column headerText="HMO Type" id="c14" width="180">
+                                            <af:selectOneChoice value="#{row.bindings.HmoType.inputValue}"
+                                                                label="#{row.bindings.HmoType.label}" autoSubmit="true"
+                                                                disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                required="#{bindings.HMOTradDtl.hints.HmoType.mandatory}"
+                                                                shortDesc="#{bindings.HMOTradDtl.hints.HmoType.tooltip}"
+                                                                id="soc4">
+                                                <f:selectItems value="#{row.bindings.HmoType.items}" id="si4"/>
+                                                <f:validator binding="#{row.bindings.HmoType.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column headerText="HMO Type"  width="180" rendered="false"
+                                                   id="c13">
+                                            <af:selectOneChoice value="#{row.bindings.Tran_HmoType.inputValue}"
+                                                                label="#{row.bindings.Tran_HmoType.label}"
+                                                                required="#{bindings.HMOTradDtl.hints.Tran_HmoType.mandatory}"
+                                                                shortDesc="#{bindings.HMOTradDtl.hints.Tran_HmoType.tooltip}"
+                                                                id="soc3">
+                                                <f:selectItems value="#{row.bindings.Tran_HmoType.items}" id="si3"/>
+                                                <f:validator binding="#{row.bindings.Tran_HmoType.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.HMOTradDtl.hints.Trans_TraditionalCatType.label}"
+                                                   width="250" id="c11">
+                                            <af:selectOneChoice value="#{row.bindings.Trans_TraditionalCatType.inputValue}"
+                                                                label="#{row.bindings.Trans_TraditionalCatType.label}"
+                                                                disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                required="#{bindings.HMOTradDtl.hints.Trans_TraditionalCatType.mandatory}"
+                                                                shortDesc="#{bindings.HMOTradDtl.hints.Trans_TraditionalCatType.tooltip}"
+                                                                id="soc2" autoSubmit="true"  partialTriggers="trans_CategoryId"
+                                                                valueChangeListener="#{backingBeanScope.AddEditHmoDetails.switchVcl}">
+                                                <f:selectItems value="#{row.bindings.Trans_TraditionalCatType.items}"
+                                                               id="si2"/>
+                                                <f:validator binding="#{row.bindings.Trans_TraditionalCatType.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column headerText="Dependent Class" id="c3"  rendered="false"
+                                                   width="180">
+                                            <af:inputComboboxListOfValues id="hmoTradClassId" autoSubmit="true"  rendered="false"
+                                                                          disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                          popupTitle="Search and Select: #{bindings.HMOTradDtl.hints.HmoTradClass.label}"
+                                                                          value="#{row.bindings.HmoTradClass.inputValue}"
+                                                                          model="#{row.bindings.HmoTradClass.listOfValuesModel}"
+                                                                          required="#{bindings.HMOTradDtl.hints.HmoTradClass.mandatory}"
+                                                                          columns="#{bindings.HMOTradDtl.hints.HmoTradClass.displayWidth}"
+                                                                          shortDesc="#{bindings.HMOTradDtl.hints.HmoTradClass.tooltip}"
+                                                                        
+                                                                          partialTriggers="trans_CategoryId">
+                                                <f:validator binding="#{row.bindings.HmoTradClass.validator}"/>
+                                            </af:inputComboboxListOfValues>
+                                        </af:column>
+                                        <af:column headerText="Dependent Option"
+                                                   width="280" id="c8">
+                                            <af:inputComboboxListOfValues id="trans_CategoryId" partialTriggers="c3"
+                                                                          disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                          popupTitle="Search and Select: #{bindings.HMOTradDtl.hints.Trans_Category.label}"
+                                                                          value="#{row.bindings.Trans_Category.inputValue}"
+                                                                          model="#{row.bindings.Trans_Category.listOfValuesModel}"
+                                                                          required="#{bindings.HMOTradDtl.hints.Trans_Category.mandatory}"
+                                                                          columns="#{bindings.HMOTradDtl.hints.Trans_Category.displayWidth}"
+                                                                     autoSubmit="true"     shortDesc="#{bindings.HMOTradDtl.hints.Trans_Category.tooltip}">
+                                                <f:validator binding="#{row.bindings.Trans_Category.validator}"/>
+                                            </af:inputComboboxListOfValues>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.HMOTradDtl.hints.TradCategory.label}" id="c4"
+                                                   width="200" rendered="false">
+                                            <af:inputComboboxListOfValues id="tradCategoryId"
+                                                                          disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                                          popupTitle="Search and Select: #{bindings.HMOTradDtl.hints.TradCategory.label}"
+                                                                          value="#{row.bindings.TradCategory.inputValue}"
+                                                                          model="#{row.bindings.TradCategory.listOfValuesModel}"
+                                                                          required="#{bindings.HMOTradDtl.hints.TradCategory.mandatory}"
+                                                                          columns="#{bindings.HMOTradDtl.hints.TradCategory.displayWidth}"
+                                                                          shortDesc="#{bindings.HMOTradDtl.hints.TradCategory.tooltip}"
+                                                                          partialTriggers="c3">
+                                                <f:validator binding="#{row.bindings.TradCategory.validator}"/>
+                                            </af:inputComboboxListOfValues>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.HMOTradDtl.hints.TradCatLibertyBlueCost.label}"
+                                                   rendered="false" id="c5" width="200">
+                                            <af:inputText value="#{row.bindings.TradCatLibertyBlueCost.inputValue}"
+                                                          disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                          label="#{bindings.HMOTradDtl.hints.TradCatLibertyBlueCost.label}"
+                                                    autoSubmit="true"      required="#{bindings.HMOTradDtl.hints.TradCatLibertyBlueCost.mandatory}"
+                                                          columns="#{bindings.HMOTradDtl.hints.TradCatLibertyBlueCost.displayWidth}"
+                                                          maximumLength="#{bindings.HMOTradDtl.hints.TradCatLibertyBlueCost.precision}"
+                                                          shortDesc="#{bindings.HMOTradDtl.hints.TradCatLibertyBlueCost.tooltip}"
+                                                          id="it7">
+                                                <f:validator binding="#{row.bindings.TradCatLibertyBlueCost.validator}"/>
+                                                <af:convertNumber minFractionDigits="2" maxFractionDigits="2"
+                                                                  pattern="###,###,###,###"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.HMOTradDtl.hints.TradCatAxamansardCost.label}"
+                                                   rendered="false" id="c6" width="200">
+                                            <af:inputText value="#{row.bindings.TradCatAxamansardCost.inputValue}"
+                                                          disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                          label="#{bindings.HMOTradDtl.hints.TradCatAxamansardCost.label}"
+                                                          required="#{bindings.HMOTradDtl.hints.TradCatAxamansardCost.mandatory}"
+                                                          columns="#{bindings.HMOTradDtl.hints.TradCatAxamansardCost.displayWidth}"
+                                                          maximumLength="#{bindings.HMOTradDtl.hints.TradCatAxamansardCost.precision}"
+                                                          shortDesc="#{bindings.HMOTradDtl.hints.TradCatAxamansardCost.tooltip}"
+                                                          id="it8">
+                                                <f:validator binding="#{row.bindings.TradCatAxamansardCost.validator}"/>
+                                                <af:convertNumber minFractionDigits="2" maxFractionDigits="2"
+                                                                  pattern="###,###,###,###"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.HMOTradDtl.hints.TradCatRedcareCost.label}"
+                                                   rendered="false" id="c7" width="200">
+                                            <af:inputText value="#{row.bindings.TradCatRedcareCost.inputValue}"
+                                                          disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                          label="#{bindings.HMOTradDtl.hints.TradCatRedcareCost.label}"
+                                                          required="#{bindings.HMOTradDtl.hints.TradCatRedcareCost.mandatory}"
+                                                          columns="#{bindings.HMOTradDtl.hints.TradCatRedcareCost.displayWidth}"
+                                                          maximumLength="#{bindings.HMOTradDtl.hints.TradCatRedcareCost.precision}"
+                                                          shortDesc="#{bindings.HMOTradDtl.hints.TradCatRedcareCost.tooltip}"
+                                                          id="it9">
+                                                <f:validator binding="#{row.bindings.TradCatRedcareCost.validator}"/>
+                                                <af:convertNumber minFractionDigits="2" maxFractionDigits="2"
+                                                                  pattern="###,###,###,###"/>
+                                            </af:inputText>
+                                        </af:column>
+                                       
+                                        <af:column headerText="#{bindings.HMOTradDtl.hints.TradCatTypeCost.label}" width="200"
+                                                   id="c12">
+                                            <af:inputText value="#{row.bindings.TradCatTypeCost.inputValue}"
+                                                          label="#{bindings.HMOTradDtl.hints.TradCatTypeCost.label}"
+                                                          disabled="#{bindings.Active1.inputValue ne 'Y' ? true : false}"
+                                                          required="#{bindings.HMOTradDtl.hints.TradCatTypeCost.mandatory}"
+                                                          columns="#{bindings.HMOTradDtl.hints.TradCatTypeCost.displayWidth}"
+                                                          maximumLength="#{bindings.HMOTradDtl.hints.TradCatTypeCost.precision}"
+                                                          shortDesc="#{bindings.HMOTradDtl.hints.TradCatTypeCost.tooltip}"
+                                                          id="it6">
+                                                <f:validator binding="#{row.bindings.TradCatTypeCost.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.HMOTradDtl.hints.TradCatTypeCost.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelBox>
+                                         </af:showDetailItem>
+                    </af:panelTabbed>
+                </af:panelBox>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

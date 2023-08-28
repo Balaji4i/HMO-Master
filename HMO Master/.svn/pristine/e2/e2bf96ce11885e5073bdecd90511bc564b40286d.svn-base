@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox id="pb1">
+                <f:facet name="toolbar"/>
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                            <af:outputText value="Oando Extra Duty Allowance" id="ot1"
+                                           inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc4">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal" halign="right">
+                                <af:button text="Save &amp; Submit" id="b3"
+                                           actionListener="#{backingBeanScope.AddEditDuty.onClickSave}"
+                                           partialSubmit="true"/>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Cancel" id="b1"
+                                           actionListener="#{backingBeanScope.AddEditDuty.onClickCancel}"
+                                           immediate="true" action="back"></af:button>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                 <af:panelFormLayout id="pfl2" rows="2" maxColumns="2"
+                                fieldWidth="200" labelWidth="200">
+                    <af:panelLabelAndMessage label="#{bindings.Name_Trns.hints.label}" id="plam1">
+                        <af:outputText value="#{bindings.Name_Trns.inputValue}"
+                                       shortDesc="#{bindings.Name_Trns.hints.tooltip}" id="ot2"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.Number_Trns.hints.label}" id="plam2">
+                        <af:outputText value="#{bindings.Number_Trns.inputValue}"
+                                       shortDesc="#{bindings.Number_Trns.hints.tooltip}" id="ot3">
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Number_Trns.format}"/>
+                        </af:outputText>
+                         </af:panelLabelAndMessage>
+                        <af:panelLabelAndMessage label="#{bindings.Email_Trns.hints.label}" id="plam3">
+                            <af:outputText value="#{bindings.Email_Trns.inputValue}"
+                                           shortDesc="#{bindings.Email_Trns.hints.tooltip}" id="ot4"/>
+                        </af:panelLabelAndMessage>
+                        <af:panelLabelAndMessage label="#{bindings.Group_Trns.hints.label}" id="plam4">
+                            <af:outputText value="#{bindings.Group_Trns.inputValue}"
+                                           shortDesc="#{bindings.Group_Trns.hints.tooltip}" id="ot5"/>
+                        </af:panelLabelAndMessage>
+                   
+                </af:panelFormLayout>
+                <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                    <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.ExtraDutyAllowanceId.inputValue}"
+                                      label="#{bindings.ExtraDutyAllowanceId.hints.label}"
+                                      required="#{bindings.ExtraDutyAllowanceId.hints.mandatory}"
+                                      columns="#{bindings.ExtraDutyAllowanceId.hints.displayWidth}"
+                                      disabled="#{pageFlowScope.mode eq 'edit' ? true : false}"
+                                      maximumLength="#{bindings.ExtraDutyAllowanceId.hints.precision}"
+                                      shortDesc="#{bindings.ExtraDutyAllowanceId.hints.tooltip}" id="it6">
+                            <f:validator binding="#{bindings.ExtraDutyAllowanceId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.ExtraDutyAllowanceId.format}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.TransactionDate.inputValue}"
+                                      label="#{bindings.TransactionDate.hints.label}" autoSubmit="true"
+                                      required="#{bindings.TransactionDate.hints.mandatory}"
+                                      disabled="#{pageFlowScope.mode eq 'edit' ? true : false}"
+                                      columns="#{bindings.TransactionDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.TransactionDate.hints.tooltip}" id="id1">
+                            <f:validator binding="#{bindings.TransactionDate.validator}"/>
+                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputComboboxListOfValues id="trans_AllowanceId"
+                                                      popupTitle="Search and Select: #{bindings.Trans_Allowance.hints.label}"
+                                                      value="#{bindings.Trans_Allowance.inputValue}"
+                                                      label="#{bindings.Trans_Allowance.hints.label}"
+                                                      model="#{bindings.Trans_Allowance.listOfValuesModel}"
+                                                      required="#{bindings.Trans_Allowance.hints.mandatory}"
+                                                      columns="#{bindings.Trans_Allowance.hints.displayWidth}"
+                                                      shortDesc="#{bindings.Trans_Allowance.hints.tooltip}"
+                                                      valueChangeListener="#{backingBeanScope.AddEditDuty.startEndDateVCL}">
+                            <f:validator binding="#{bindings.Trans_Allowance.validator}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:inputText value="#{bindings.AllowanceType.inputValue}"
+                                      label="#{bindings.AllowanceType.hints.label}" rendered="false"
+                                      required="#{bindings.AllowanceType.hints.mandatory}"
+                                      columns="#{bindings.AllowanceType.hints.displayWidth}"
+                                      maximumLength="#{bindings.AllowanceType.hints.precision}"
+                                      shortDesc="#{bindings.AllowanceType.hints.tooltip}"
+                                      partialTriggers="trans_AllowanceId" id="it1">
+                            <f:validator binding="#{bindings.AllowanceType.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.AllowanceRate.inputValue}"
+                                      label="#{bindings.AllowanceRate.hints.label}" disabled="true"
+                                      required="#{bindings.AllowanceRate.hints.mandatory}"
+                                      columns="#{bindings.AllowanceRate.hints.displayWidth}"
+                                      maximumLength="#{bindings.AllowanceRate.hints.precision}"
+                                      shortDesc="#{bindings.AllowanceRate.hints.tooltip}"
+                                      partialTriggers="trans_AllowanceId" id="it2" autoSubmit="true">
+                            <f:validator binding="#{bindings.AllowanceRate.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.AllowanceRate.format}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.StartDate.inputValue}" label="#{bindings.StartDate.hints.label}"
+                                      required="#{bindings.StartDate.hints.mandatory}"
+                                      columns="#{bindings.StartDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.StartDate.hints.tooltip}" id="id2"
+                                      valueChangeListener="#{backingBeanScope.AddEditDuty.startEndDateVCL}"
+                                      autoSubmit="true">
+                            <f:validator binding="#{bindings.StartDate.validator}"/>
+                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputDate value="#{bindings.EndDate.inputValue}" label="#{bindings.EndDate.hints.label}"
+                                      required="#{bindings.EndDate.hints.mandatory}"
+                                      columns="#{bindings.EndDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.EndDate.hints.tooltip}" id="id3"
+                                      valueChangeListener="#{backingBeanScope.AddEditDuty.startEndDateVCL}"
+                                      autoSubmit="true">
+                            <f:validator binding="#{bindings.EndDate.validator}"/>
+                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.AllowanceDays.inputValue}"
+                                      label="#{bindings.AllowanceDays.hints.label}"
+                                      required="#{bindings.AllowanceDays.hints.mandatory}"
+                                      columns="#{bindings.AllowanceDays.hints.displayWidth}"
+                                      maximumLength="#{bindings.AllowanceDays.hints.precision}"
+                                      shortDesc="#{bindings.AllowanceDays.hints.tooltip}" id="it3"
+                                      binding="#{backingBeanScope.AddEditDuty.daysCount}" autoSubmit="true"
+                                      disabled="true">
+                            <f:validator binding="#{bindings.AllowanceDays.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.AllowanceDays.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.AllowanceAmount.inputValue}"
+                                      label="#{bindings.AllowanceAmount.hints.label}"
+                                      required="#{bindings.AllowanceAmount.hints.mandatory}"
+                                      columns="#{bindings.AllowanceAmount.hints.displayWidth}"
+                                      maximumLength="#{bindings.AllowanceAmount.hints.precision}"
+                                      shortDesc="#{bindings.AllowanceAmount.hints.tooltip}" id="it4"
+                                      partialTriggers="it4 id2 id3" disabled="true"
+                                      binding="#{backingBeanScope.AddEditDuty.allowanceAmount}">
+                            <f:validator binding="#{bindings.AllowanceAmount.validator}"/>
+                            <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+                                      required="#{bindings.Comments.hints.mandatory}"
+                                      columns="#{bindings.Comments.hints.displayWidth}"
+                                      maximumLength="#{bindings.Comments.hints.precision}"
+                                      shortDesc="#{bindings.Comments.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Comments.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:panelGroupLayout>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

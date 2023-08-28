@@ -1,0 +1,23 @@
+//Groovy Scripts for model.vo.HMOTradDtl
+
+package model.vo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+import oracle.jbo.script.annotation.RefreshExpression;
+
+@TransientValueExpression(attributeName="Trans_switch")
+def Trans_switch_ExpressionScript_Expression()
+{
+if (PreferredCategory=='Traditional Dependent Categorization')
+      return "Lv_Self";
+  else
+      return "Lv_Others";
+}
+
+
+@RefreshExpression(attributeName="Trans_switch")
+def Trans_switch_RecalcExpressionScript_RecalcExpression()
+{
+true
+}
+

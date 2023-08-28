@@ -1,0 +1,12 @@
+//Groovy Scripts for model.vo.HMOMaster_VO
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="Lookup_ROVO", name="bv_self")
+def bv_self_Lookup_ROVO_BindVariable_BoundParameter()
+{
+HmoPlanYear
+}
+

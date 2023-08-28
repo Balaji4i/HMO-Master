@@ -1,0 +1,40 @@
+//Groovy Scripts for model.vo.HMOBupaDtl_VO
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="Lookup_ROVO", name="bv_self")
+def bv_self_Lookup_ROVO_BindVariable_BoundParameter()
+{
+BupaAgeCategory
+}
+
+
+@AccessorParameterExpression(accessorName="HMO_Category_ROVO1", name="BV_Opt")
+def BV_Opt_HMO_Category_ROVO1_BindVariable_BoundParameter()
+{
+HmoOptions
+}
+
+
+@AccessorParameterExpression(accessorName="HMO_Options_ROVO1", name="BV_Id")
+def BV_Id_HMO_Options_ROVO1_BindVariable_BoundParameter()
+{
+HmoMasterHdrId
+}
+
+
+@AccessorParameterExpression(accessorName="HMO_Category_ROVO1", name="BV_ID")
+def BV_ID_HMO_Category_ROVO1_BindVariable_BoundParameter()
+{
+HmoMasterHdrId
+}
+
+
+@AccessorParameterExpression(accessorName="HMO_Options_ROVO1", name="BV_ID")
+def BV_ID_HMO_Options_ROVO1_BindVariable_BoundParameter()
+{
+HmoMasterHdrId
+}
+

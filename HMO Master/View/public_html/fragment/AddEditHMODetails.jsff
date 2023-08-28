@@ -1,0 +1,478 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox id="pb1" showDisclosure="false">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                            <af:outputText value="HMO Master Form" id="ot1"
+                                           inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc4">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal" halign="right">
+                                <af:button text="Save" id="b3"
+                                           actionListener="#{backingBeanScope.AddEditHmoDetails.onClickSave}"/>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Cancel" id="b1" immediate="true" action="back"
+                                           actionListener="#{backingBeanScope.AddEditHmoDetails.onClickCancel}"></af:button>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:panelBox showDisclosure="false" inlineStyle="border-color:transparent;" id="pb2">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl2" rows="2" maxColumns="2" fieldWidth="400px">
+                        <af:inputText value="#{bindings.Name_Trns.inputValue}" label="#{bindings.Name_Trns.hints.label}"
+                                      required="#{bindings.Name_Trns.hints.mandatory}" contentStyle="width:250px;"
+                                      readOnly="true" columns="#{bindings.Name_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Name_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Name_Trns.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.Name_Trns.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Number_Trns.inputValue}"
+                                      label="#{bindings.Number_Trns.hints.label}" readOnly="true"
+                                      contentStyle="width:250px;" required="#{bindings.Number_Trns.hints.mandatory}"
+                                      columns="#{bindings.Number_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Number_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Number_Trns.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.Number_Trns.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Email_Trns.inputValue}"
+                                      label="#{bindings.Email_Trns.hints.label}" readOnly="true"
+                                      contentStyle="width:250px;" required="#{bindings.Email_Trns.hints.mandatory}"
+                                      columns="#{bindings.Email_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Email_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Email_Trns.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.Email_Trns.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Group_Trns.inputValue}"
+                                      label="#{bindings.Group_Trns.hints.label}" readOnly="true"
+                                      contentStyle="width:250px;" required="#{bindings.Group_Trns.hints.mandatory}"
+                                      columns="#{bindings.Group_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Group_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Group_Trns.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.Group_Trns.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Cadre_Trns.inputValue}"
+                                      label="#{bindings.Cadre_Trns.hints.label}" readOnly="true"
+                                      contentStyle="width:250px;" required="#{bindings.Cadre_Trns.hints.mandatory}"
+                                      columns="#{bindings.Cadre_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Cadre_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Cadre_Trns.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Cadre_Trns.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                    <af:spacer width="10" height="10" id="s5"/>
+                    <af:panelBox text="HMO Options Details" showDisclosure="false" inlineStyle="border-color:transparent;" id="pb4">
+                        <f:facet name="toolbar"/>
+                    
+                    <af:panelGroupLayout id="pgl6">
+                        <af:panelFormLayout id="pfl1"  maxColumns="2" rows="2">
+                            <af:inputText  value="#{bindings.HmoOptionsId.inputValue}"
+                                       autoSubmit="true"   label="Request No"  contentStyle="width:250px;"
+                                          required="#{bindings.HmoOptionsId.hints.mandatory}" disabled="true"
+                                          columns="#{bindings.HmoOptionsId.hints.displayWidth}"
+                                          maximumLength="#{bindings.HmoOptionsId.hints.precision}"
+                                          shortDesc="#{bindings.HmoOptionsId.hints.tooltip}" id="it13">
+                                <f:validator binding="#{bindings.HmoOptionsId.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.HmoOptionsId.format}"/>
+                            </af:inputText>
+                                <af:selectOneChoice value="#{bindings.PlanName.inputValue}"
+                                                    label="Plan Name" autoSubmit="true"
+                                                    required="#{bindings.PlanName.hints.mandatory}"
+                                                    shortDesc="#{bindings.PlanName.hints.tooltip}" id="soc4">
+                                    <f:selectItems value="#{bindings.PlanName.items}" id="si4"/>
+                                    <f:validator binding="#{bindings.PlanName.validator}"/>
+                                </af:selectOneChoice>
+                                <af:inputText value="#{bindings.HmoOptions.inputValue}"
+                                    autoSubmit="true"      label="#{bindings.HmoOptions.hints.label}"
+                                           contentStyle="width:250px;"
+                                          required="#{bindings.HmoOptions.hints.mandatory}"
+                                          columns="#{bindings.HmoOptions.hints.displayWidth}"
+                                          maximumLength="#{bindings.HmoOptions.hints.precision}"
+                                          shortDesc="#{bindings.HmoOptions.hints.tooltip}" id="it14">
+                                <f:validator binding="#{bindings.HmoOptions.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.ContactPersonName.inputValue}"
+                                          label="#{bindings.ContactPersonName.hints.label}"
+                                           contentStyle="width:250px;" autoSubmit="true"
+                                          required="#{bindings.ContactPersonName.hints.mandatory}"
+                                          columns="#{bindings.ContactPersonName.hints.displayWidth}"
+                                          maximumLength="#{bindings.ContactPersonName.hints.precision}"
+                                          shortDesc="#{bindings.ContactPersonName.hints.tooltip}" id="it15">
+                                <f:validator binding="#{bindings.ContactPersonName.validator}"/>
+                            </af:inputText>
+                            <af:selectOneChoice value="#{bindings.HmoType.inputValue}"
+                             contentStyle="width:250px;" autoSubmit="true"
+                             label="#{bindings.HmoType.label}"
+                                                required="#{bindings.HmoType.hints.mandatory}"
+                                                shortDesc="#{bindings.HmoType.hints.tooltip}" id="soc2">
+                                <f:selectItems value="#{bindings.HmoType.items}" id="si2"/>
+                                <f:validator binding="#{bindings.HmoType.validator}"/>
+                            </af:selectOneChoice>
+                            <af:inputText value="#{bindings.EmailAddress.inputValue}"
+                             contentStyle="width:250px;" autoSubmit="true"
+                                          label="#{bindings.EmailAddress.hints.label}"
+                                          required="#{bindings.EmailAddress.hints.mandatory}"
+                                          columns="#{bindings.EmailAddress.hints.displayWidth}"
+                                          maximumLength="#{bindings.EmailAddress.hints.precision}"
+                                          shortDesc="#{bindings.EmailAddress.hints.tooltip}" id="it16">
+                                <f:validator binding="#{bindings.EmailAddress.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.ContactNumber.inputValue}"
+                                          label="#{bindings.ContactNumber.hints.label}"
+                                           contentStyle="width:250px;" autoSubmit="true"
+                                          required="#{bindings.ContactNumber.hints.mandatory}"
+                                          columns="#{bindings.ContactNumber.hints.displayWidth}"
+                                          maximumLength="#{bindings.ContactNumber.hints.precision}"
+                                          shortDesc="#{bindings.ContactNumber.hints.tooltip}" id="it17">
+                                <f:validator binding="#{bindings.ContactNumber.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.ResiAddress.inputValue}"
+                                          label="#{bindings.ResiAddress.hints.label}"
+                                           contentStyle="width:250px;" autoSubmit="true"
+                                          required="#{bindings.ResiAddress.hints.mandatory}"
+                                          columns="#{bindings.ResiAddress.hints.displayWidth}"
+                                          maximumLength="#{bindings.ResiAddress.hints.precision}"
+                                          shortDesc="#{bindings.ResiAddress.hints.tooltip}" id="it18">
+                                <f:validator binding="#{bindings.ResiAddress.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.Comments.inputValue}"
+                                          label="#{bindings.Comments.hints.label}"
+                                           contentStyle="width:250px;" autoSubmit="true"
+                                          required="#{bindings.Comments.hints.mandatory}"
+                                          columns="#{bindings.Comments.hints.displayWidth}"
+                                          maximumLength="#{bindings.Comments.hints.precision}"
+                                          shortDesc="#{bindings.Comments.hints.tooltip}" id="it19" rows="6">
+                                <f:validator binding="#{bindings.Comments.validator}"/>
+                            </af:inputText>
+                            
+                        </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+                </af:panelBox>
+                <af:spacer width="10" height="10" id="s3"/>
+                <af:panelBox text="" id="pb3" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <af:spacer width="10" height="10" id="s4"/>
+                    <af:panelTabbed position="above" id="pt2" styleClass="AFStretchWidth">
+                        <af:showDetailItem rendered="false" id="tab1" text="HMO Options Details">
+                            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2" flex="10">
+                                        <af:panelGroupLayout id="pgl3" layout="horizontal" halign="right">
+                                            <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                                     disabledIcon="/images/func_add_16_dis.png"
+                                                     depressedIcon="/images/func_add_16_act.png"
+                                                     hoverIcon="/images/func_add_16_hov.png"
+                                                     actionListener="#{bindings.CreateInsert.execute}"
+                                                     disabled="#{!bindings.CreateInsert.enabled}"></af:link>
+                                        </af:panelGroupLayout>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.HMOOptionMasterVO.collectionModel}" var="row"
+                                          rows="#{bindings.HMOOptionMasterVO.rangeSize}"
+                                          emptyText="#{bindings.HMOOptionMasterVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0" scrollPolicy="page"
+                                          selectedRowKeys="#{bindings.HMOOptionMasterVO.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.HMOOptionMasterVO.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.HMOOptionMasterVO.rangeSize}"
+                                          id="t1" partialTriggers="::cil3 :::pc2:l1">
+                                    <af:column headerText="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.label}"
+                                               id="c1">
+                                        <af:inputText value="#{row.bindings.HmoOptionsId.inputValue}" disabled="true"
+                                                      autoSubmit="true"
+                                                      label="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.label}"
+                                                      required="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.mandatory}"
+                                                      columns="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.displayWidth}"
+                                                      maximumLength="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.precision}"
+                                                      shortDesc="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.tooltip}"
+                                                      id="it6">
+                                            <f:validator binding="#{row.bindings.HmoOptionsId.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOOptionMasterVO.hints.HmoOptions.label}"
+                                               width="200" id="c2">
+                                        <af:inputText value="#{row.bindings.HmoOptions.inputValue}" autoSubmit="true"
+                                                      label="#{bindings.HMOOptionMasterVO.hints.HmoOptions.label}"
+                                                      required="#{bindings.HMOOptionMasterVO.hints.HmoOptions.mandatory}"
+                                                      columns="#{bindings.HMOOptionMasterVO.hints.HmoOptions.displayWidth}"
+                                                      maximumLength="#{bindings.HMOOptionMasterVO.hints.HmoOptions.precision}"
+                                                      shortDesc="#{bindings.HMOOptionMasterVO.hints.HmoOptions.tooltip}"
+                                                      id="it7">
+                                            <f:validator binding="#{row.bindings.HmoOptions.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOOptionMasterVO.hints.HmoType.label}"
+                                               width="200" id="c3">
+                                        <af:selectOneChoice value="#{row.bindings.HmoType.inputValue}"
+                                                            label="#{row.bindings.HmoType.label}" autoSubmit="true"
+                                                            required="#{bindings.HMOOptionMasterVO.hints.HmoType.mandatory}"
+                                                            shortDesc="#{bindings.HMOOptionMasterVO.hints.HmoType.tooltip}"
+                                                            id="soc1">
+                                            <f:selectItems value="#{row.bindings.HmoType.items}" id="si1"/>
+                                            <f:validator binding="#{row.bindings.HmoType.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOOptionMasterVO.hints.ResiAddress.label}"
+                                               width="200" id="c4">
+                                        <af:inputText value="#{row.bindings.ResiAddress.inputValue}" autoSubmit="true"
+                                                      label="#{bindings.HMOOptionMasterVO.hints.ResiAddress.label}"
+                                                      rows="4"
+                                                      required="#{bindings.HMOOptionMasterVO.hints.ResiAddress.mandatory}"
+                                                      columns="#{bindings.HMOOptionMasterVO.hints.ResiAddress.displayWidth}"
+                                                      maximumLength="#{bindings.HMOOptionMasterVO.hints.ResiAddress.precision}"
+                                                      shortDesc="#{bindings.HMOOptionMasterVO.hints.ResiAddress.tooltip}"
+                                                      id="it8">
+                                            <f:validator binding="#{row.bindings.ResiAddress.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.label}"
+                                               width="200" id="c5">
+                                        <af:inputText value="#{row.bindings.ContactPersonName.inputValue}"
+                                                      autoSubmit="true"
+                                                      label="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.label}"
+                                                      required="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.mandatory}"
+                                                      columns="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.displayWidth}"
+                                                      maximumLength="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.precision}"
+                                                      shortDesc="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.tooltip}"
+                                                      id="it9">
+                                            <f:validator binding="#{row.bindings.ContactPersonName.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOOptionMasterVO.hints.EmailAddress.label}"
+                                               width="200" id="c6">
+                                        <af:inputText value="#{row.bindings.EmailAddress.inputValue}" autoSubmit="true"
+                                                      label="#{bindings.HMOOptionMasterVO.hints.EmailAddress.label}"
+                                                      required="#{bindings.HMOOptionMasterVO.hints.EmailAddress.mandatory}"
+                                                      columns="#{bindings.HMOOptionMasterVO.hints.EmailAddress.displayWidth}"
+                                                      maximumLength="#{bindings.HMOOptionMasterVO.hints.EmailAddress.precision}"
+                                                      shortDesc="#{bindings.HMOOptionMasterVO.hints.EmailAddress.tooltip}"
+                                                      id="it10">
+                                            <f:validator binding="#{row.bindings.EmailAddress.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOOptionMasterVO.hints.ContactNumber.label}"
+                                               width="200" id="c7">
+                                        <af:inputText value="#{row.bindings.ContactNumber.inputValue}" autoSubmit="true"
+                                                      label="#{bindings.HMOOptionMasterVO.hints.ContactNumber.label}"
+                                                      required="#{bindings.HMOOptionMasterVO.hints.ContactNumber.mandatory}"
+                                                      columns="#{bindings.HMOOptionMasterVO.hints.ContactNumber.displayWidth}"
+                                                      maximumLength="#{bindings.HMOOptionMasterVO.hints.ContactNumber.precision}"
+                                                      shortDesc="#{bindings.HMOOptionMasterVO.hints.ContactNumber.tooltip}"
+                                                      id="it11">
+                                            <f:validator binding="#{row.bindings.ContactNumber.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column width="200" 
+                                               headerText="#{bindings.HMOOptionMasterVO.hints.Comments.label}" id="c8">
+                                        <af:inputText value="#{row.bindings.Comments.inputValue}" autoSubmit="true"
+                                                      label="#{bindings.HMOOptionMasterVO.hints.Comments.label}"
+                                                      rows="4"
+                                                      required="#{bindings.HMOOptionMasterVO.hints.Comments.mandatory}"
+                                                      columns="#{bindings.HMOOptionMasterVO.hints.Comments.displayWidth}"
+                                                      maximumLength="#{bindings.HMOOptionMasterVO.hints.Comments.precision}"
+                                                      shortDesc="#{bindings.HMOOptionMasterVO.hints.Comments.tooltip}"
+                                                      id="it12">
+                                            <f:validator binding="#{row.bindings.Comments.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </af:showDetailItem>
+                        <af:showDetailItem id="tab2" text="HMO Category Details">
+                        <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t3" flex="10">
+                                        <af:panelGroupLayout id="pgl4" layout="horizontal" halign="right">
+                                            <af:link id="l1" icon="/images/func_add_16_ena.png"
+                                                     disabledIcon="/images/func_add_16_dis.png"
+                                                     depressedIcon="/images/func_add_16_act.png"
+                                                     hoverIcon="/images/func_add_16_hov.png"
+                                                   actionListener="#{bindings.CreateWithParams.execute}"
+                                                     >
+                                           </af:link>
+                                        </af:panelGroupLayout>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.HMOCategoryMasterVO.collectionModel}" var="row"
+                                          rows="#{bindings.HMOCategoryMasterVO.rangeSize}"
+                                          emptyText="#{bindings.HMOCategoryMasterVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0" scrollPolicy="page"
+                                          selectedRowKeys="#{bindings.HMOCategoryMasterVO.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.HMOCategoryMasterVO.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.HMOCategoryMasterVO.rangeSize}"
+                                          id="t5" >
+                                    <af:column headerText="#{bindings.HMOCategoryMasterVO.hints.HmoOptions.label}"
+                                               id="c9" width="150">
+                                        <af:inputText value="#{row.bindings.HmoOptions.inputValue}" disabled="true"
+                                        
+                                                      label="#{bindings.HMOCategoryMasterVO.hints.HmoOptions.label}"
+                                                      required="#{bindings.HMOCategoryMasterVO.hints.HmoOptions.mandatory}"
+                                                      columns="#{bindings.HMOCategoryMasterVO.hints.HmoOptions.displayWidth}"
+                                                      maximumLength="#{bindings.HMOCategoryMasterVO.hints.HmoOptions.precision}"
+                                                      shortDesc="#{bindings.HMOCategoryMasterVO.hints.HmoOptions.tooltip}"
+                                                      id="it20">
+                                            <f:validator binding="#{row.bindings.HmoOptions.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOCategoryMasterVO.hints.HmoCategory.label}"
+                                               id="c10" width="250">
+                                        <af:inputText value="#{row.bindings.HmoCategory.inputValue}"
+                                                      label="#{bindings.HMOCategoryMasterVO.hints.HmoCategory.label}"
+                                                      required="#{bindings.HMOCategoryMasterVO.hints.HmoCategory.mandatory}"
+                                                      columns="#{bindings.HMOCategoryMasterVO.hints.HmoCategory.displayWidth}"
+                                                      maximumLength="#{bindings.HMOCategoryMasterVO.hints.HmoCategory.precision}"
+                                                      shortDesc="#{bindings.HMOCategoryMasterVO.hints.HmoCategory.tooltip}"
+                                                      id="it21">
+                                            <f:validator binding="#{row.bindings.HmoCategory.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOCategoryMasterVO.hints.DependentOptions.label}"
+                                               id="c11" width="250">
+                                        <af:inputText value="#{row.bindings.DependentOptions.inputValue}"
+                                                      label="#{bindings.HMOCategoryMasterVO.hints.DependentOptions.label}"
+                                                      required="#{bindings.HMOCategoryMasterVO.hints.DependentOptions.mandatory}"
+                                                      columns="#{bindings.HMOCategoryMasterVO.hints.DependentOptions.displayWidth}"
+                                                      maximumLength="#{bindings.HMOCategoryMasterVO.hints.DependentOptions.precision}"
+                                                      shortDesc="#{bindings.HMOCategoryMasterVO.hints.DependentOptions.tooltip}"
+                                                      id="it22">
+                                            <f:validator binding="#{row.bindings.DependentOptions.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOCategoryMasterVO.hints.MaxEligibiltyCost.label}"
+                                               width="200" id="c12">
+                                        <af:inputText value="#{row.bindings.MaxEligibiltyCost.inputValue}"
+                                                      label="#{bindings.HMOCategoryMasterVO.hints.MaxEligibiltyCost.label}"
+                                                      required="#{bindings.HMOCategoryMasterVO.hints.MaxEligibiltyCost.mandatory}"
+                                                      columns="#{bindings.HMOCategoryMasterVO.hints.MaxEligibiltyCost.displayWidth}"
+                                                      maximumLength="#{bindings.HMOCategoryMasterVO.hints.MaxEligibiltyCost.precision}"
+                                                      shortDesc="#{bindings.HMOCategoryMasterVO.hints.MaxEligibiltyCost.tooltip}"
+                                                      id="it23">
+                                            <f:validator binding="#{row.bindings.MaxEligibiltyCost.validator}"/>
+                                            <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOCategoryMasterVO.hints.Currency.label}"
+                                               width="150" id="c13">
+                                        <af:selectOneChoice value="#{row.bindings.Currency.inputValue}"
+                                                            label="#{row.bindings.Currency.label}"
+                                                            required="#{bindings.HMOCategoryMasterVO.hints.Currency.mandatory}"
+                                                            shortDesc="#{bindings.HMOCategoryMasterVO.hints.Currency.tooltip}"
+                                                            id="soc3">
+                                            <f:selectItems value="#{row.bindings.Currency.items}" id="si3"/>
+                                            <f:validator binding="#{row.bindings.Currency.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:column>
+                                    <af:column id="c19" width="100" headerText="Delete">
+                                        <af:link actionListener="#{bindings.Delete1.execute}"
+                                                 icon="/images/func_remove_16_ena.png"
+                                                 hoverIcon="/images/func_remove_16_hov.png"
+                                                 depressedIcon="/images/func_report_16_act.png"
+                                                 disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true"
+                                                 rendered="true" id="l4"/>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Hospital Details" id="sdi2">
+                          <af:panelCollection id="pc3" styleClass="AFStretchWidth">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t4" flex="10">
+                                        <af:panelGroupLayout id="pgl5" layout="horizontal" halign="right">
+                                            <af:link id="l2"
+                                            icon="/images/func_add_16_ena.png"
+                                                     disabledIcon="/images/func_add_16_dis.png"
+                                                     depressedIcon="/images/func_add_16_act.png"
+                                                     hoverIcon="/images/func_add_16_hov.png"
+                                                     actionListener="#{bindings.CreateWithParams1.execute}"
+                                                    ></af:link>
+                       
+                                        </af:panelGroupLayout>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.HMOHospitalMasterVO.collectionModel}" var="row"
+                                          rows="#{bindings.HMOHospitalMasterVO.rangeSize}"
+                                          emptyText="#{bindings.HMOHospitalMasterVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0" scrollPolicy="page"
+                                          selectedRowKeys="#{bindings.HMOHospitalMasterVO.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.HMOHospitalMasterVO.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.HMOHospitalMasterVO.rangeSize}"
+                                          id="t6" partialTriggers="::l2">
+                                    <af:column headerText="#{bindings.HMOHospitalMasterVO.hints.HmoOptions.label}"
+                                               id="c14" width="200">
+                                        <af:inputText value="#{row.bindings.HmoOptions.inputValue}" disabled="true"
+                                                      label="#{bindings.HMOHospitalMasterVO.hints.HmoOptions.label}"
+                                                      required="#{bindings.HMOHospitalMasterVO.hints.HmoOptions.mandatory}"
+                                                      columns="#{bindings.HMOHospitalMasterVO.hints.HmoOptions.displayWidth}"
+                                                      maximumLength="#{bindings.HMOHospitalMasterVO.hints.HmoOptions.precision}"
+                                                      shortDesc="#{bindings.HMOHospitalMasterVO.hints.HmoOptions.tooltip}"
+                                                      id="it25">
+                                            <f:validator binding="#{row.bindings.HmoOptions.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOHospitalMasterVO.hints.StateOfResidence.label}"
+                                          width="250"  id="c15">
+                                        <af:inputText value="#{row.bindings.StateOfResidence.inputValue}"
+                                                      label="#{bindings.HMOHospitalMasterVO.hints.StateOfResidence.label}"
+                                                      required="#{bindings.HMOHospitalMasterVO.hints.StateOfResidence.mandatory}"
+                                                      columns="#{bindings.HMOHospitalMasterVO.hints.StateOfResidence.displayWidth}"
+                                                      maximumLength="#{bindings.HMOHospitalMasterVO.hints.StateOfResidence.precision}"
+                                                      shortDesc="#{bindings.HMOHospitalMasterVO.hints.StateOfResidence.tooltip}"
+                                                      id="it26">
+                                            <f:validator binding="#{row.bindings.StateOfResidence.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOHospitalMasterVO.hints.Hospital.label}"
+                                             width="300"  id="c16">
+                                        <af:inputText value="#{row.bindings.Hospital.inputValue}"
+                                                      label="#{bindings.HMOHospitalMasterVO.hints.Hospital.label}"
+                                                      required="#{bindings.HMOHospitalMasterVO.hints.Hospital.mandatory}"
+                                                      columns="#{bindings.HMOHospitalMasterVO.hints.Hospital.displayWidth}"
+                                                      maximumLength="#{bindings.HMOHospitalMasterVO.hints.Hospital.precision}"
+                                                      shortDesc="#{bindings.HMOHospitalMasterVO.hints.Hospital.tooltip}"
+                                                      id="it27">
+                                            <f:validator binding="#{row.bindings.Hospital.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.HMOHospitalMasterVO.hints.Comments.label}"
+                                           width="250"    id="c17">
+                                        <af:inputText value="#{row.bindings.Comments.inputValue}"
+                                                      label="#{bindings.HMOHospitalMasterVO.hints.Comments.label}"
+                                                      required="#{bindings.HMOHospitalMasterVO.hints.Comments.mandatory}"
+                                                      columns="#{bindings.HMOHospitalMasterVO.hints.Comments.displayWidth}"
+                                                      maximumLength="#{bindings.HMOHospitalMasterVO.hints.Comments.precision}"
+                                                      shortDesc="#{bindings.HMOHospitalMasterVO.hints.Comments.tooltip}"
+                                                      id="it28">
+                                            <f:validator binding="#{row.bindings.Comments.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column  headerText="Delete" width="100" id="c18">
+                                        <af:link actionListener="#{bindings.Delete.execute}" 
+                                        icon="/images/func_remove_16_ena.png"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             depressedIcon="/images/func_report_16_act.png"
+                                             disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true"
+                                             rendered="true" id="l3"></af:link>
+                                             </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </af:showDetailItem>
+                    </af:panelTabbed>
+                </af:panelBox>
+            </af:panelBox>
+        </f:facet>
+    </af:pageTemplate>
+</jsp:root>

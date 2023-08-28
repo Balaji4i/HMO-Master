@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditHmoPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HMOMaster_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="HMOMaster_VOIterator"/>
+    <iterator Binds="HMOBupaDtl_VO" RangeSize="5" DataControl="Oando_AMDataControl" id="HMOBupaDtl_VOIterator"/>
+    <iterator Binds="HMOTradDtl" RangeSize="5" DataControl="Oando_AMDataControl" id="HMOTradDtlIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="HmoMasterHdrId">
+      <AttrNames>
+        <Item Value="HmoMasterHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="HmoPlanName">
+      <AttrNames>
+        <Item Value="HmoPlanName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="HMOMaster_VOIterator" StaticList="false" Uses="LOV_HmoPlanYear" id="HmoPlanYear"/>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="BupaCurrencyCode">
+      <AttrNames>
+        <Item Value="BupaCurrencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="BupaEligibleCost">
+      <AttrNames>
+        <Item Value="BupaEligibleCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="HMOMaster_VOIterator" id="Active1" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="HMOBupaDtl_VOIterator" id="HMOBupaDtl_VO">
+      <nodeDefinition DefName="model.vo.HMOBupaDtl_VO" Name="HMOBupaDtl_VO0">
+        <AttrNames>
+          <Item Value="Trans_Category"/>
+          <Item Value="BupaAgeCategory"/>
+          <Item Value="Trans_BupaCatType"/>
+          <Item Value="BupaAgeCategoryCost"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="HMOBupaDtl_VOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="HMOBupaDtl_VOIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="HMOTradDtlIterator" id="HMOTradDtl">
+      <nodeDefinition DefName="model.vo.HMOTradDtl" Name="HMOTradDtl0">
+        <AttrNames>
+          <Item Value="HmoTradClass"/>
+          <Item Value="Trans_Category"/>
+          <Item Value="TradCategory"/>
+          <Item Value="TradCatLibertyBlueCost"/>
+          <Item Value="TradCatAxamansardCost"/>
+          <Item Value="TradCatRedcareCost"/>
+          <Item Value="Trans_TraditionalCatType"/>
+          <Item Value="TradCatTypeCost"/>
+          <Item Value="Tran_HmoType"/>
+          <Item Value="HmoType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HMOTradDtlIterator" id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="HMOTradDtlIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <listOfValues IterBinding="HMOMaster_VOIterator" StaticList="false" Uses="LOV_Trans_Year" id="Trans_Year"/>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="AxaLbCurrencyCode">
+      <AttrNames>
+        <Item Value="AxaLbCurrencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HMOMaster_VOIterator" id="AxaLbEligibleCost">
+      <AttrNames>
+        <Item Value="AxaLbEligibleCost"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HMOBupaDtl_VOIterator" id="HMOBupaDtl_VO1">
+      <nodeDefinition DefName="model.vo.HMOBupaDtl_VO" Name="HMOBupaDtl_VO10">
+        <AttrNames>
+          <Item Value="HmoOptions"/>
+          <Item Value="HmoCategory"/>
+          <Item Value="Trans_Category"/>
+          <Item Value="AgeCategory"/>
+          <Item Value="AgeCategoryCost"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="HMOTradDtlIterator" id="HMOTradDtl1">
+      <nodeDefinition DefName="model.vo.HMOTradDtl" Name="HMOTradDtl10">
+        <AttrNames>
+          <Item Value="HmoOptions"/>
+          <Item Value="PreferredCategory"/>
+          <Item Value="Trans_Category"/>
+          <Item Value="DependentOption"/>
+          <Item Value="AssociatedCategoryCost"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

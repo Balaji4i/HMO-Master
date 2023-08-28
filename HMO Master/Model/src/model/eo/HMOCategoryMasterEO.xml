@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HMOCategoryMasterEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXHR_HMO_CATEGORY_MASTER"
+  AliasName="HMOCategoryMasterEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="HmoCategoryId"
+    ColumnName="HMO_CATEGORY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_CATEGORY_MASTER"
+    PrimaryKey="true">
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="HMOCategoryMasterEORow"/>
+  </Attribute>
+  <Attribute
+    Name="HmoOptionsId"
+    ColumnName="HMO_OPTIONS_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_CATEGORY_MASTER"/>
+  <Attribute
+    Name="HmoOptions"
+    Precision="240"
+    ColumnName="HMO_OPTIONS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HmoCategory"
+    Precision="240"
+    ColumnName="HMO_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DependentOptions"
+    Precision="240"
+    ColumnName="DEPENDENT_OPTIONS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MaxEligibiltyCost"
+    ColumnName="MAX_ELIGIBILTY_COST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_CATEGORY_MASTER"/>
+  <Attribute
+    Name="Currency"
+    Precision="240"
+    ColumnName="CURRENCY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActiveFlag"
+    Precision="2"
+    ColumnName="ACTIVE_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="HMOCategoryMasterEORow"/>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXHR_HMO_CATEGORY_MASTER"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="HMOCategoryMasterEORow"/>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXHR_HMO_CATEGORY_MASTER"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="HMOCategoryMasterEORow"/>
+  </Attribute>
+  <Attribute
+    Name="Attribute1"
+    Precision="240"
+    ColumnName="ATTRIBUTE1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HmoMasterHdrId"
+    ColumnName="HMO_MASTER_HDR_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXHR_HMO_CATEGORY_MASTER"/>
+  <Attribute
+    Name="PlanName"
+    Precision="200"
+    ColumnName="PLAN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXHR_HMO_CATEGORY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="HMOOptionMasterEO"
+    Association="model.association.HMOOptCategory_Assoc"
+    AssociationEnd="model.association.HMOOptCategory_Assoc.HMOOptionMasterEO"
+    AssociationOtherEnd="model.association.HMOOptCategory_Assoc.HMOCategoryMasterEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <ViewLinkAccessor
+    Name="HMOOptionMasterVO"
+    ViewLink="model.vl.HMOOptCategoryVL"
+    ViewLinkEnd="model.vl.HMOOptCategoryVL.HMOOptionMasterVO"
+    ViewLinkOtherEnd="model.vl.HMOOptCategoryVL.HMOCategoryMasterVO"
+    Type="model.vo.HMOOptionMasterVORowImpl"
+    IsUpdateable="false"/>
+  <Key
+    Name="HmocategorymastereoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="HMOCATEGORYMASTEREO_PRIMARY_KE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOCategoryMasterEO.HmoCategoryId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_HMOCategoryMasterEO">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="HMOOPTIONMASTEREO_PRIMARY_KEY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_HMOCATEGORY_MASTER_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.HMOCategoryMasterEO.HmoOptionsId"/>
+    </AttrArray>
+  </Key>
+</Entity>

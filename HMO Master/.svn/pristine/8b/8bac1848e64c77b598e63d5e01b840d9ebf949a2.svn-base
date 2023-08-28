@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelGroupLayout layout="vertical" id="pgl2">
+                <af:panelGroupLayout layout="vertical" id="pgl4">
+                    <af:panelHeader text="HMO Master Form" id="ph1">
+                        <af:query id="qryId1" headerText="Search" disclosed="true"
+                                  value="#{bindings.searchVCQuery.queryDescriptor}"
+                                  model="#{bindings.searchVCQuery.queryModel}"
+                                  queryListener="#{bindings.searchVCQuery.processQuery}"
+                                  queryOperationListener="#{bindings.searchVCQuery.processQueryOperation}"/>
+                    </af:panelHeader>
+                </af:panelGroupLayout>
+                <af:panelBox id="pb1" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" flex="1">
+                                <af:panelGroupLayout id="pgl1" layout="horizontal" halign="right">
+                                    <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                             hoverIcon="/images/func_add_16_hov.png" partialSubmit="true"
+                                             action="addEdit">
+                                        <af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                                type="action"/>
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                    <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                             disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                             actionListener="#{backingBeanScope.SearchHmoOptions.onClickEdit}">
+                                        <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{bindings.HmoOptionsId.inputValue}"
+                                                                to="#{pageFlowScope.headerId}" type="action"/>
+                                    </af:link>
+                                    <!--<af:spacer width="10" height="10" id="s2"/>
+                                    <af:link 
+                                             icon="/images/func_remove_16_ena.png"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             depressedIcon="/images/func_report_16_act.png"
+                                             disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true" id="l3"
+                                             rendered="true"></af:link>-->
+                                </af:panelGroupLayout>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.HMOOptionMasterVO.collectionModel}" var="row"
+                                  rows="#{bindings.HMOOptionMasterVO.rangeSize}"
+                                  emptyText="#{bindings.HMOOptionMasterVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.HMOOptionMasterVO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.HMOOptionMasterVO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.HMOOptionMasterVO.rangeSize}" id="t1">
+                            <af:column rendered="false"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.label}" id="c1">
+                                <af:outputText value="#{row.HmoOptionsId}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.tooltip}"
+                                               id="ot1">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.HMOOptionMasterVO.hints.HmoOptionsId.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column align="center" width="210"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.HmoOptions.label}" id="c2">
+                                <af:outputText value="#{row.HmoOptions}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.HmoOptions.tooltip}"
+                                               id="ot2"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.HMOOptionMasterVO.hints.PlanName.label}" id="c10"  width="250">
+                                <af:outputText value="#{row.PlanName}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.PlanName.tooltip}"
+                                               id="ot9"/>
+                            </af:column>
+                            <af:column align="center" width="210"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.HmoType.label}" id="c3">
+                                <af:outputText value="#{row.HmoType}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.HmoType.tooltip}"
+                                               id="ot3"/>
+                            </af:column>
+                            <af:column align="center" width="210"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.ResiAddress.label}" id="c4">
+                                <af:outputText value="#{row.ResiAddress}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.ResiAddress.tooltip}"
+                                               id="ot4"/>
+                            </af:column>
+                            <af:column align="center" width="210"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.label}" id="c5">
+                                <af:outputText value="#{row.ContactPersonName}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.ContactPersonName.tooltip}"
+                                               id="ot5"/>
+                            </af:column>
+                            <af:column align="center" width="210"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.EmailAddress.label}" id="c6">
+                                <af:outputText value="#{row.EmailAddress}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.EmailAddress.tooltip}"
+                                               id="ot6"/>
+                            </af:column>
+                            <af:column align="center" width="210"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.ContactNumber.label}" id="c7">
+                                <af:outputText value="#{row.ContactNumber}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.ContactNumber.tooltip}"
+                                               id="ot7"/>
+                            </af:column>
+                            <af:column align="center" width="210"
+                                       headerText="#{bindings.HMOOptionMasterVO.hints.Comments.label}" id="c8">
+                                <af:outputText value="#{row.Comments}"
+                                               shortDesc="#{bindings.HMOOptionMasterVO.hints.Comments.tooltip}"
+                                               id="ot8"/>
+                            </af:column>
+                            <af:column align="center" headerText="Delete" width="75" id="c9">
+                                <af:link icon="/images/func_remove_16_ena.png" id="l1"
+                                         actionListener="#{backingBeanScope.SearchHmoOptions.onClickDelete}"/>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>
